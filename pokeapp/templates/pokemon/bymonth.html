@@ -1,33 +1,37 @@
 {% extends "layouts/base.html" %} 
 {% block content %}
 <div class="row">
-    {% for pokemon in all_pokemons %}
-    <div class="col-md-6 col-xl-4 invisible" data-toggle="appear">
-        <div class="block block-rounded">
-            <div class="block-content p-0 overflow-hidden">
-                <a class="img-link" href="be_pages_real_estate_listing.html">
-                    <img class="img-fluid rounded-top" src="assets/media/photos/photo35.jpg" alt="">
-                </a>
-            </div>
-            <div class="block-content border-bottom">
-                <h4 class="font-size-h5 mb-10">{{ pokemon.name }}</h4>
-                <h5 class="font-size-h1 font-w300 mb-5">{{ pokemon.pokemon_type }}</h5>
-                <p class="text-muted">
-                    <i class="fa fa-map-pin mr-5"></i> {{ pokemon.birthday }}
-                </p>
-            </div>
-            <div class="block-content block-content-full">
-                <div class="row">
-                    <div class="col-6">
-                        <a class="btn btn-sm btn-hero btn-noborder btn-secondary btn-block" href="{% url 'detail' pokemon.id %}">
-                            Details
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+  {% if all_pokemons %}
+  {% for pokemon in all_pokemons %}
+  <div class="col-md-6 col-xl-4 invisible" data-toggle="appear">
+      <div class="block block-rounded">
+          <div class="block-content p-0 overflow-hidden">
+              <a class="img-link" href="be_pages_real_estate_listing.html">
+                  <img class="img-fluid rounded-top" src="{{ pokemon.picture }}" alt="">
+              </a>
+          </div>
+          <div class="block-content border-bottom">
+              <h4 class="font-size-h5 mb-10">{{ pokemon.name }}</h4>
+              <h5 class="font-size-h1 font-w300 mb-5">{{ pokemon.pokemon_type }}</h5>
+              <p class="text-muted">
+                  <i class="fa fa-map-pin mr-5"></i> {{ pokemon.birthday }}
+              </p>
+          </div>
+          <div class="block-content block-content-full">
+              <div class="row">
+                  <div class="col-6">
+                      <a class="btn btn-sm btn-hero btn-noborder btn-secondary btn-block" href="{% url 'detail' pokemon.id %}">
+                          Details
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <h1>No hay resultados</h1>
+  {% endif %}
 </div>
 
 {% endblock content %}
