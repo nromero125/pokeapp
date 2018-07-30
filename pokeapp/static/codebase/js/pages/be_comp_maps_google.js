@@ -28,10 +28,16 @@ var BeCompMapsGoogle = function() {
                     callback: function (results, status) {
                         if ((status === 'OK') && results) {
                             var latlng = results[0].geometry.location;
+                            var latitude = document.getElementById('latitude');
+                            var longitude = document.getElementById('longitude');
 
                             mapSearch.removeMarkers();
                             mapSearch.addMarker({ lat: latlng.lat(), lng: latlng.lng() });
                             mapSearch.fitBounds(results[0].geometry.viewport);
+                            latitude.textContent = latlng.lat();
+                            longitude.textContent = latlng.lng();
+                            latitude.value = latlng.lat();
+                            longitude.value = latlng.lng();
 
                             inputGroup.siblings('.form-text').remove();
                         } else {

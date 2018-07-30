@@ -12,6 +12,26 @@
             </table>
             <input type="submit" class="btn btn-primary" value="Guardar" />
         </form>
+                    <!-- Search Map -->
+                    <div class="block">
+                        <div class="block-content block-content-sm">
+                            <!-- Search Form -->
+                            <form class="js-form-search mb-10" action="be_comp_maps_google.html" method="post">
+                                <div class="input-group input-group-lg">
+                                    <input type="text" class="js-search-address form-control" placeholder="Search.. (eg: Tokyo)">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-secondary">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- END Search Form -->
+                        </div>
+                        <!-- Search Map Container -->
+                        <div id="js-map-search" style="height: 500px;"></div>
+                    </div>
+                    <!-- END Search Map -->
     </div>
 </div>
 {% endblock content %}

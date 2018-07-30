@@ -5,7 +5,7 @@ import datetime
 class PostForm(forms.ModelForm):
     class Meta:
         model = Pokemon
-        fields = '__all__'
+        fields = ('name', 'birthday', 'latitude', 'longitude', 'zodiac_sign', 'favorite_food', 'blood_type')
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
         }
@@ -16,15 +16,12 @@ class PostForm(forms.ModelForm):
             attrs = {'class': 'form-control', 'type': 'date'}
         ))
     latitude = forms.FloatField(label='Latitude', widget = forms.TextInput(
-            attrs = {'class': 'form-control', 'type': 'number'}
+            attrs = {'class': 'form-control', 'type': 'number','id':'latitude'}
         ))    
     longitude = forms.FloatField(label='Longitude', widget = forms.TextInput(
-            attrs = {'class': 'form-control', 'type': 'number'}
+            attrs = {'class': 'form-control', 'type': 'number', 'id' : 'longitude'}
         ))    
     zodiac_sign = forms.CharField(label='Signo zodiacal', max_length=100, widget = forms.TextInput(
-            attrs = {'class': 'form-control'}
-        ))
-    pokemon_type = forms.CharField(label='Tipo de pokemon', max_length=100, widget = forms.TextInput(
             attrs = {'class': 'form-control'}
         ))
     favorite_food = forms.CharField(label='Comida favorita', max_length=100, widget = forms.TextInput(
