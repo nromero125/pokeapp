@@ -5,8 +5,8 @@
     <div class="col-md-6 col-xl-4 invisible" data-toggle="appear">
         <div class="block block-rounded">
             <div class="block-content p-0 overflow-hidden">
-                <a class="img-link" href="be_pages_real_estate_listing.html">
-                    <img class="img-fluid rounded-top" src="assets/media/photos/photo35.jpg" alt="">
+                <a class="img-link" href="{% url 'detail' pokemon.id %}">
+                    <img class="img-fluid rounded-top" src="{{ pokemon.picture }}" alt="">
                 </a>
             </div>
             <div class="block-content border-bottom">
@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-6">
                         <a class="btn btn-sm btn-hero btn-noborder btn-secondary btn-block" href="{% url 'detail' pokemon.id %}">
-                            Details
+                            Detalles
                         </a>
                     </div>
                 </div>

@@ -9,7 +9,21 @@
             {% csrf_token %}
             <div class="col-md-3">
                 <label for="">Mes</label>
-                <input type="number" name="month" min="1" max="12" class="form-control">
+                <select name="month" class="form-control">
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+                <br>
                 <button type="submit" class="btn btn-primary">Buscar</button>
             </div>
         </form>
@@ -19,15 +33,30 @@
             <div class="col-md-3">
                 <label for="">Tipo</label>
                 <select name="pokemon_type" class="form-control">
-                    <option value="Agua">Agua</option>
-                    <option value="Fuego">Fuego</option>
-                    <option value="Oscuro">Oscuro</option>
-                    <option value="Hierba">Hierba</option>
-                    <option value="Electrico">Electrico</option>
+                    <option value="normal">normal</option>
+                    <option value="fighting">fighting</option>
+                    <option value="flying">flying</option>
+                    <option value="poison">poison</option>
+                    <option value="ground">ground</option>
+                    <option value="rock">rock</option>
+                    <option value="bug">bug</option>
+                    <option value="ghost">ghost</option>
+                    <option value="steel">steel</option>
+                    <option value="fire">fire</option>
+                    <option value="water">water</option>
+                    <option value="grass">grass</option>
+                    <option value="electric">electric</option>
+                    <option value="psychic">psychic</option>
+                    <option value="ice">ice</option>
+                    <option value="dragon">dragon</option>
+                    <option value="fairy">fairy</option>
+                    <option value="dark">dark</option>
                 </select>
+                <br>
                 <button type="submit" class="btn btn-primary">Buscar</button>
             </div>
         </form>
+        <hr>
     </div>
 </div>
 
