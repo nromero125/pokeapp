@@ -24,7 +24,7 @@ def create(request):
         if form.is_valid():
             new_pokemon = form.save(commit=False)
             # process the data in form.cleaned_data as required
-            json_data = open(os.path.join(settings.BASE_DIR, 'pokemons.json'))
+            json_data = open(os.path.join(settings.BASE_DIR, 'pokemons.json'), encoding='latin1' )
             data = json.load(json_data) 
             for pokemon in data:
                 if pokemon['name'] == request.POST['name']:
@@ -38,7 +38,7 @@ def create(request):
                     new_pokemon.longitude = request.POST['longitude']
                     new_pokemon.save()
             # redirect to a new URL:
-            return HttpResponseRedirect('')
+            return HttpResponseRedirect('http://127.0.0.1:8000/pokemons/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -46,7 +46,7 @@ def create(request):
 
     return render(request, 'pokemon/create.html', {'form': form})
 
-def bymonth(request):
+def reports(request):
     if request.method == 'POST':
         month = request.POST['month']
         all_pokemons = Pokemon.objects.filter(birthday__month=month)

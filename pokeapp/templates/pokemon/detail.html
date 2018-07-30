@@ -40,4 +40,82 @@
         </div>
     </div>
 </div>
+ <!-- Search Map -->
+ <div class="block">
+    <div class="block-content block-content-sm">
+        <!-- Search Form -->
+        <form class="js-form-search mb-10" action="be_comp_maps_google.html" method="post">
+            <div class="input-group input-group-lg">
+                <input type="text" class="js-search-address form-control" placeholder="Search.. (eg: Tokyo)">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!-- END Search Form -->
+    </div>
+    <!-- Search Map Container -->
+    <div id="js-map-search" style="height: 500px;"></div>
+</div>
+<!-- END Search Map -->
 {% endblock content %}
+{% block scripts %}
+<script>
+    var BeCompMapsGoogle = function() {
+    // Gmaps.js, for more examples you can check out https://hpneo.github.io/gmaps/
+
+    // Init Search Map
+    var initMapSearch = function(){
+        if ( jQuery('#js-map-search').length ) {
+            // Init Map
+            var mapSearch = new GMaps({
+                div: '#js-map-search',
+                lat: {{ pokemon.latitude }},
+                lng: {{ pokemon.longitude }},
+                zoom: 2,
+                scrollwheel: true
+            });
+
+            // When the search form is submitted
+            jQuery('.js-form-search').on('submit', function(){
+                var inputGroup = jQuery('.js-search-address').parent('.input-group');
+
+                GMaps.geocode({
+                    address: jQuery('.js-search-address').val().trim(),
+                    callback: function (results, status) {
+                        if ((status === 'OK') && results) {
+                            var latlng = results[0].geometry.location;
+                            var latitude = document.getElementById('latitude');
+                            var longitude = document.getElementById('longitude');
+
+                            mapSearch.removeMarkers();
+                            mapSearch.addMarker({ lat: latlng.lat(), lng: latlng.lng() });
+                            mapSearch.fitBounds(results[0].geometry.viewport);
+
+                            inputGroup.siblings('.form-text').remove();
+                        } else {
+                            inputGroup.after('<div class="form-text text-danger text-xs-center animated fadeInDown">Address not found!</div>')
+                        }
+                    }
+                });
+
+                return false;
+            });
+        }
+    };
+
+
+    return {
+        init: function () {
+            // Init Map with Search functionality
+            initMapSearch();
+        }
+    };
+}();
+
+// Initialize when page loads
+jQuery(function(){ BeCompMapsGoogle.init(); });
+</script>
+{% endblock scripts %}

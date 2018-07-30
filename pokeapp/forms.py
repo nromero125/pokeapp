@@ -16,10 +16,10 @@ class PostForm(forms.ModelForm):
             attrs = {'class': 'form-control', 'type': 'date'}
         ))
     latitude = forms.FloatField(label='Latitude', widget = forms.TextInput(
-            attrs = {'class': 'form-control', 'type': 'number','id':'latitude'}
+            attrs = {'class': 'form-control', 'type': 'text','id':'latitude'}
         ))    
     longitude = forms.FloatField(label='Longitude', widget = forms.TextInput(
-            attrs = {'class': 'form-control', 'type': 'number', 'id' : 'longitude'}
+            attrs = {'class': 'form-control', 'type': 'text', 'id' : 'longitude'}
         ))    
     zodiac_sign = forms.CharField(label='Signo zodiacal', max_length=100, widget = forms.TextInput(
             attrs = {'class': 'form-control'}
