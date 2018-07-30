@@ -27,7 +27,11 @@ def create(request):
             new_pokemon = form.save(commit=False)
             # process the data in form.cleaned_data as required
             json_data = open(os.path.join(settings.BASE_DIR, 'pokemons.json'), encoding='latin1' )
-            data = json.load(json_data) 
+            data = json.load(json_data)
+            checkpokemon = Pokemon.objects.filter(name = request.POST['name']).count()
+            if checkpokemon:
+                 messages.warning(request, 'Este pokemon ya existe en la base de datos.')
+                 return HttpResponseRedirect('http://127.0.0.1:8000/pokemons/create')
             for pokemon in data:
                 if pokemon['name'] == request.POST['name']:
                     new_pokemon.picture = pokemon['image_url']

@@ -12,4 +12,4 @@ class Pokemon(models.Model):
     zodiac_sign = models.CharField(max_length=20, default='Desconocido')
     picture = models.CharField(max_length=200, default='Undefined')
     def __str__(self):
-        return 'Yo soy ' + self.name
+        return self.name + ' - ' + self.pokemon_type
