@@ -5,6 +5,8 @@ from .forms import PostForm
 import json, os
 from pprint import pprint
 from django.conf import settings
+from django.contrib import messages
+
 
 
 
@@ -37,9 +39,10 @@ def create(request):
                     new_pokemon.latitude = request.POST['latitude']
                     new_pokemon.longitude = request.POST['longitude']
                     new_pokemon.save()
-            # redirect to a new URL:
-            return HttpResponseRedirect('http://127.0.0.1:8000/pokemons/')
-
+                    messages.success(request, 'Pokemon ' + new_pokemon.name + ' agregado correctamente')
+                    break
+            else:
+                messages.warning(request, 'Este no es un pokemon valido.')
     # if a GET (or any other method) we'll create a blank form
     else:
         form = PostForm()
