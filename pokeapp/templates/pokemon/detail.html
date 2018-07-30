@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %} 
+{% block content %}
+<nav class="breadcrumb push">
+    <a class="breadcrumb-item" href="{% url 'index' %}">Pokemones</a>
+    <span class="breadcrumb-item active">{{ pokemon.name}}</span>
+</nav>
+<div class="block block-rounded">
+    <div class="block-header block-header-default">
+        <h3 class="block-title">Detalles del pokemon</h3>
+    </div>
+    <div class="block-content">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{{ pokemon.picture }}" alt="pokemon">
+            </div>
+            <div class="col-md-3">
+                <b>Nombre</b>
+                <p>{{ pokemon.name}}</p>
+            </div>
+            <div class="col-md-3">
+                <b>Tipo</b>
+                <p>{{ pokemon.pokemon_type}}</p>
+            </div>
+            <div class="col-md-3">
+                <b>Fecha de nacimiento</b>
+                <p>{{ pokemon.birthday}}</p>
+            </div>
+            <div class="col-md-3">
+                <b>Tipo de sangre</b>
+                <p>{{ pokemon.blood_type}}</p>
+            </div>
+            <div class="col-md-3">
+                <b>Comida favorita</b>
+                <p>{{ pokemon.favorite_food}}</p>
+            </div>
+            <div class="col-md-3">
+                <b>Signo Zodiacal</b>
+                <p>{{ pokemon.zodiac_sign}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

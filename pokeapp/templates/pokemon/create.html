@@ -1,0 +1,17 @@
+{% extends "layouts/base.html" %}
+ {% block content %}
+<div class="block block-rounded">
+    <div class="block-header block-header-default">
+        <h3>Agregar Pokemon</h3>
+    </div>
+    <div class="block-content">
+        <form action="{% url 'create' %}" method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" class="btn btn-primary" value="Guardar" />
+        </form>
+    </div>
+</div>
+{% endblock content %}
